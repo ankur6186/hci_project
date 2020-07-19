@@ -11,7 +11,7 @@
 ## Hardware Requirements
 * Web Camera
 * Microphone
-* Google Home Device
+* Amazon Alexa
 * Speaker
 
 ## Running the application
@@ -34,8 +34,3 @@ This will start a web server on http://localhost:9966.
 
 
 The demo code for sparsification is in the Python notebook.
-
-## Team
-* Moksh Jain, 16IT221
-* Nishanth Hebbar, 16IT234
-* Mahim Agrawal, 16IT152
