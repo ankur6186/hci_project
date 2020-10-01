@@ -15,18 +15,19 @@
 * Speaker
 
 ## Running the application
-* Install the dependencies using:
+* Install the dependencies using :
+
 ```
 npm install
 ```
 
-* Start the local web server by running 
+* Start the local web server by running :
 
 ```
 npm start
 ```
 
-This will start a web server on http://localhost:9966. 
+This will start a web server on http://localhost:9966 . 
 
 1. Allow permission to your webcam and microphone. 
 
