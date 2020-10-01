@@ -5,7 +5,7 @@
 * NodeJS
 
 (For Sparsification and Pruning) 
-* Python 3
+* Python 3 and above version
 * Tensorflow 1.6
 
 ## Hardware Requirements
