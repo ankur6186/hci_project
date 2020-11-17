@@ -3,7 +3,7 @@
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _deeplearnKnnImageClassifier = require('deeplearn-knn-image-classifier');
+var _deeplearningKnnImageClassifier = require('deeplearn-knn-image-classifier');
 
 var _deeplearn = require('deeplearn');
 
@@ -30,7 +30,7 @@ var words = ["okay google", "hello"];
 
 
 // words from above array which act as terminal words in a sentence
-var endWords = ["hello"];
+var end_Words = ["hello"];
 var sentence = [];
 
 var LaunchModal = function LaunchModal() {
@@ -111,14 +111,14 @@ var Main = function () {
 
 
         if (checkbox.checked) {
-          endWords.push(word);
+          end_Words.push(word);
         }
 
         document.getElementById("new-word").value = '';
         checkbox.checked = false;
 
         // console.log(words)
-        // console.log(endWords)
+        // console.log(end_Words)
       } else {
         alert("Duplicate word or no word entered");
       }
@@ -174,7 +174,7 @@ var Main = function () {
 
           // check if atleast one terminal word has been trained
           if (!_this2.areTerminalWordsTrained(exampleCount)) {
-            alert('Add examples for atleast one terminal word.\n\nA terminal word is a word that appears at the end of a query and is necessary to trigger transcribing. e.g What is *the weather*\n\nYour terminal words are: ' + endWords);
+            alert('Add examples for atleast one terminal word.\n\nA terminal word is a word that appears at the end of a query and is necessary to trigger transcribing. e.g What is *the weather*\n\nYour terminal words are: ' + end_Words);
             return;
           }
 
@@ -202,13 +202,13 @@ var Main = function () {
       trainButton.addEventListener('mousedown', function () {
 
         // check if user has added atleast one terminal word
-        if (words.length > 3 && endWords.length == 1) {
+        if (words.length > 3 && end_Words.length == 1) {
           console.log('no terminal word added');
           alert('You have not added any terminal words.\nCurrently the only query you can make is "Okay Google, hello".\n\nA terminal word is a word that will appear in the end of your query.\nIf you intend to ask "What\'s the weather" & "What\'s the time" then add "the weather" and "the time" as terminal words. "What\'s" on the other hand is not a terminal word.');
           return;
         }
 
-        if (words.length == 3 && endWords.length == 1) {
+        if (words.length == 3 && end_Words.length == 1) {
           var proceed = confirm("You have not added any words.\n\nThe only query you can currently make is: 'Okay Google, hello'");
 
           if (!proceed) return;
@@ -242,7 +242,7 @@ var Main = function () {
       var totalTerminalWordsTrained = 0;
 
       for (var i = 0; i < words.length; i++) {
-        if (endWords.includes(words[i])) {
+        if (end_Words.includes(words[i])) {
           if (exampleCount[i] > 0) {
             totalTerminalWordsTrained += 1;
           }
@@ -275,7 +275,7 @@ var Main = function () {
     value: function loadKNN() {
       var _this5 = this;
 
-      this.knn = new _deeplearnKnnImageClassifier.KNNImageClassifier(words.length, TOPK);
+      this.knn = new _deeplearningKnnImageClassifier.KNNImageClassifier(words.length, TOPK);
 
       // Load knn model
       this.knn.load().then(function () {
@@ -569,7 +569,7 @@ var TextToSpeech = function () {
         return;
       }
 
-      // if(endWords.includes(word) && this.currentPredictedWords.length == 1 && (word != "hello" && word != "bye")){
+      // if(end_Words.includes(word) && this.currentPredictedWords.length == 1 && (word != "hello" && word != "bye")){
       //   console.log("end word detected early")
       //   console.log(word)
       //   return;
@@ -587,7 +587,7 @@ var TextToSpeech = function () {
 
       // var utterThis = new SpeechSynthesisUtterance(word)
 
-      if (endWords.includes(word)) {
+      if (end_Words.includes(word)) {
         //if last word is one of end words start listening for transcribing
         console.log("this was the last word");
         this.end = true;
