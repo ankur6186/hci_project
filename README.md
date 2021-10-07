@@ -9,7 +9,7 @@
 * Tensorflow 1.6
 
 ## Hardware Requirements
-* Web Camera
+* Web camera
 * Microphone
 * Amazon Alexa
 * Speaker
